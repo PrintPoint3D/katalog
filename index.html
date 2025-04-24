@@ -2,34 +2,86 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <title>3D Model – Náhled</title>
+  <title>Slide-Shelf Stojan</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     body {
       margin: 0;
-      background: url('pozadi.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: row;
       height: 100vh;
+      width: 100vw;
+      overflow: hidden;
     }
     model-viewer {
-      width: 90vw;
-      height: 90vh;
+      flex: 1;
       background-color: transparent;
+    }
+    .info-box {
+      width: 300px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+      backdrop-filter: blur(5px);
+      overflow-y: auto;
+    }
+    .info-box h2 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #333;
+    }
+    .info-box ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    .info-box li {
+      margin-bottom: 8px;
+      color: #444;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .info-box {
+        width: 100%;
+        height: auto;
+      }
     }
   </style>
 </head>
 <body>
-  <model-viewer
-    src="model.glb"
-    alt="3D model"
-    auto-rotate
-    camera-controls
-    poster="poster.webp"
-    shadow-intensity="1"
-    exposure="1.2">
-  </model-viewer>
+  <div class="container">
+    <model-viewer
+      src="model.glb"
+      alt="Slide-Shelf Stojan"
+      auto-rotate
+      camera-controls
+      disable-pan
+      shadow-intensity="1"
+      exposure="1.3"
+      environment-image="https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/equirectangular/royal_esplanade_1k.hdr"
+      poster="poster.webp">
+    </model-viewer>
+    
+    <div class="info-box">
+      <h2>Slide-Shelf Stojan</h2>
+      <ul>
+        <li>EKO stojan bez použití plastů</li>
+        <li>Police zarovnané s bočnicemi</li>
+        <li>Lze dodávat i na plocho</li>
+        <li>Možnost dodávat včetně cenovkových lišt</li>
+        <li>Zámky na CHEP paletu</li>
+      </ul>
+      <h3>Omezení:</h3>
+      <ul>
+        <li>Záda vždy nezisková</li>
+        <li>V případě velkého zatížení nutné použít vzpěry mezi police</li>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>
